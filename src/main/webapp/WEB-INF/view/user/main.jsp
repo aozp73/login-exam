@@ -7,7 +7,7 @@
                 <div class="my-board-box row">
 
                     <div class="card col-lg-3 p-3">
-                        <img class="card-img-top" style="height: 250px;" src="/images/dora.png" alt="Card image">
+                        <img class="card-img-top" style="height: 250px;" src="/images/spring.png" alt="Card image">
                         <hr>
                         <div class="card-body">
                             <div>작성자 : 홍길동</div>
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="card col-lg-3 p-3">
-                        <img class="card-img-top" style="height: 250px;" src="/images/dora.png" alt="Card image">
+                        <img class="card-img-top" style="height: 250px;" src="/images/java.png" alt="Card image">
                         <hr>
                         <div class="card-body">
                             <div>작성자 : 임꺽정</div>
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="card col-lg-3 p-3">
-                        <img class="card-img-top" style="height: 250px;" src="/images/dora.png" alt="Card image">
+                        <img class="card-img-top" style="height: 250px;" src="/images/sql.png" alt="Card image">
                         <hr>
                         <div class="card-body">
                             <div>작성자 : 이순신</div>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="card col-lg-3 p-3">
-                        <img class="card-img-top" style="height: 250px;" src="/images/dora.png" alt="Card image">
+                        <img class="card-img-top" style="height: 250px;" src="/images/JavaScript.png" alt="Card image">
                         <hr>
                         <div class="card-body">
                             <div>작성자 : 장보고</div>
