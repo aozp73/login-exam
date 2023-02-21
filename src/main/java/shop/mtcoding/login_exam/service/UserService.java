@@ -22,7 +22,10 @@ public class UserService {
     public void 회원가입(JoinReqDto joinReqDto) {
         // System.out.println("암호화 전 : " + joinReqDto.getPassword());
         // 비밀번호 암호화
-        String encryPassword = PasswordSha256.encrypt(joinReqDto.getPassword());
+
+        String salt = PasswordSha256.getSalt();
+
+        String encryPassword = PasswordSha256.encrypt(joinReqDto.getPassword(), salt);
 
         User sameUser = userRepository.findByUsername(joinReqDto.getUsername());
         if (sameUser != null) {
@@ -30,7 +33,7 @@ public class UserService {
         }
 
         try {
-            userRepository.insert(joinReqDto.getUsername(), encryPassword, joinReqDto.getEmail());
+            userRepository.insert(joinReqDto.getUsername(), encryPassword, joinReqDto.getEmail(), salt);
         } catch (Exception e) {
             throw new CustomException("내부적인 서버문제가 발생했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -38,13 +41,14 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public User 로그인(LoginReqDto loginReqDto) {
-        String encryPassword = PasswordSha256.encrypt(loginReqDto.getPassword());
-
         // username 일치 확인
         User user = userRepository.findByUsername(loginReqDto.getUsername());
         if (user == null) {
             throw new CustomException("아이디를 확인해주세요");
         }
+
+        String encryPassword = PasswordSha256.encrypt(loginReqDto.getPassword(), user.getSalt());
+
         // password 일치 확인
         if (!user.getPassword().equals(encryPassword)) {
             throw new CustomException("패스워드를 확인해주세요");

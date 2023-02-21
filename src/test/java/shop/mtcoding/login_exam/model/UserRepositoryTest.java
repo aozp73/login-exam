@@ -25,7 +25,7 @@ public class UserRepositoryTest {
         User findById = userRepository.findById(1);
         // List<User> findByAll = userRepository.findByAll();
         int deleteById = userRepository.deleteById(2);
-        int insert = userRepository.insert("test", "1234", "test@nate.com");
+        // int insert = userRepository.insert("test", "1234", "test@nate.com");
         List<User> findByAll = userRepository.findByAll();
 
         // JavaObject -> JSON

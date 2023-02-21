@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserRepository {
         public int insert(@Param("username") String username, @Param("password") String password,
-                        @Param("email") String eamil);
+                        @Param("email") String email, @Param("salt") String salt);
 
         public List<User> findByAll();
 

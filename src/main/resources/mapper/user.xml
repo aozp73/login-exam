@@ -5,7 +5,7 @@
 
 <mapper namespace="shop.mtcoding.login_exam.model.UserRepository">
     <insert id="insert">
-      insert into user_tb(username, password, email, created_at) values(#{username},#{password},#{email},now())
+      insert into user_tb(username, password, email, salt, created_at) values(#{username},#{password},#{email},#{salt},now())
     </insert>
 
     <select id="findByAll" resultType="shop.mtcoding.login_exam.model.User">
