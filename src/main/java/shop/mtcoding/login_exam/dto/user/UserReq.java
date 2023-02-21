@@ -1,4 +1,4 @@
-package shop.mtcoding.login_exam.dto;
+package shop.mtcoding.login_exam.dto.user;
 
 import lombok.Getter;
 import lombok.Setter;
