@@ -20,6 +20,11 @@ public class UserController {
         return "user/joinForm";
     }
 
+    @GetMapping("/loginForm")
+    public String loginForm() {
+        return "user/loginForm";
+    }
+
     @PostMapping("/join")
     public String join(JoinReqDto joinReqDto) {
 

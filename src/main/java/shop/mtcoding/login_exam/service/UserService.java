@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import shop.mtcoding.login_exam.dto.user.UserReq.JoinReqDto;
-import shop.mtcoding.login_exam.handler.ex.CustomApiException;
 import shop.mtcoding.login_exam.handler.ex.CustomException;
 import shop.mtcoding.login_exam.model.User;
 import shop.mtcoding.login_exam.model.UserRepository;
