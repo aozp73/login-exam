@@ -2,6 +2,8 @@ package shop.mtcoding.login_exam.controller;
 
 import javax.servlet.http.HttpSession;
 
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +14,6 @@ import shop.mtcoding.login_exam.dto.user.UserReq.LoginReqDto;
 import shop.mtcoding.login_exam.handler.ex.CustomException;
 import shop.mtcoding.login_exam.model.User;
 import shop.mtcoding.login_exam.service.UserService;
-import shop.mtcoding.login_exam.util.Script;
 
 @RequiredArgsConstructor
 @Controller
@@ -21,6 +22,8 @@ public class UserController {
     private final UserService userService;
 
     private final HttpSession session;
+
+    // private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/joinForm")
     public String joinForm() {
@@ -34,11 +37,11 @@ public class UserController {
 
     @GetMapping("/")
     public String main() {
-        if (session.getAttribute("principal") == null) {
-            throw new CustomException("로그인이 필요합니다.", "/loginForm");
-        } else {
-            return "user/main";
-        }
+        // if (session.getAttribute("principal") == null) {
+        // throw new CustomException("로그인이 필요합니다.", "/loginForm");
+        // } else {
+        return "user/main";
+        // }
     }
 
     @PostMapping("/join")

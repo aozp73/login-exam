@@ -50,8 +50,9 @@ public class UserControllerTest {
     @Test
     public void join_test() throws Exception {
         // given
-        // String requestBody = "username=ssar&password=1234&email=cos@nate.com"; 동일유저
-        // 에러
+        // 동일유저 에러
+        // String requestBody = "username=ssar&password=1234&email=cos@nate.com";
+
         String requestBody = "username=testname&password=1234&email=testname@nate.com";
 
         // when
