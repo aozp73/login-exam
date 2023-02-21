@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import shop.mtcoding.login_exam.dto.user.UserReq.JoinReqDto;
+import shop.mtcoding.login_exam.dto.user.UserReq.LoginReqDto;
 import shop.mtcoding.login_exam.handler.ex.CustomException;
 import shop.mtcoding.login_exam.model.User;
 import shop.mtcoding.login_exam.model.UserRepository;
@@ -28,6 +29,20 @@ public class UserService {
         } catch (Exception e) {
             throw new CustomException("내부적인 서버문제가 발생했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
+    @Transactional(readOnly = true)
+    public User 로그인(LoginReqDto loginReqDto) {
+        // username 일치 확인
+        User principal = userRepository.findByUsername(loginReqDto.getUsername());
+        if (principal == null) {
+            throw new CustomException("아이디를 확인해주세요");
+        }
+        // password 일치 확인
+        if (!principal.getPassword().equals(loginReqDto.getPassword())) {
+            throw new CustomException("패스워드를 확인해주세요");
+        }
+
+        return principal;
     }
 }
