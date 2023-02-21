@@ -34,7 +34,6 @@ public class UserController {
 
     @GetMapping("/")
     public String main() {
-
         if (session.getAttribute("principal") == null) {
             throw new CustomException("로그인이 필요합니다.", "/loginForm");
         } else {
