@@ -8,6 +8,7 @@ import lombok.Getter;
 public class CustomException extends RuntimeException {
 
     private HttpStatus status;
+    private String url = "";
 
     public CustomException(String msg, HttpStatus status) {
         super(msg);
@@ -16,5 +17,10 @@ public class CustomException extends RuntimeException {
 
     public CustomException(String msg) {
         this(msg, HttpStatus.BAD_REQUEST);
+    }
+
+    public CustomException(String msg, String url) {
+        this(msg, HttpStatus.BAD_REQUEST);
+        this.url = url;
     }
 }

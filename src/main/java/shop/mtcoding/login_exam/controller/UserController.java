@@ -12,6 +12,7 @@ import shop.mtcoding.login_exam.dto.user.UserReq.LoginReqDto;
 import shop.mtcoding.login_exam.handler.ex.CustomException;
 import shop.mtcoding.login_exam.model.User;
 import shop.mtcoding.login_exam.service.UserService;
+import shop.mtcoding.login_exam.util.Script;
 
 @RequiredArgsConstructor
 @Controller
@@ -29,6 +30,16 @@ public class UserController {
     @GetMapping("/loginForm")
     public String loginForm() {
         return "user/loginForm";
+    }
+
+    @GetMapping("/")
+    public String main() {
+
+        if (session.getAttribute("principal") == null) {
+            throw new CustomException("로그인이 필요합니다.", "/loginForm");
+        } else {
+            return "user/main";
+        }
     }
 
     @PostMapping("/join")
@@ -52,15 +63,15 @@ public class UserController {
     @PostMapping("/login")
     public String login(LoginReqDto loginReqDto) {
         if (loginReqDto.getUsername() == null || loginReqDto.getUsername().isEmpty()) {
-            throw new CustomException("username을 작성해주세요");
+            throw new CustomException("아이디를 작성해주세요");
         }
         if (loginReqDto.getPassword() == null || loginReqDto.getPassword().isEmpty()) {
-            throw new CustomException("password를 작성해주세요");
+            throw new CustomException("비밀번호를 작성해주세요");
         }
         User principal = userService.로그인(loginReqDto);
         session.setAttribute("principal", principal);
 
-        return "redirect:/loginForm";
+        return "redirect:/";
     }
 
     @GetMapping("/logout")

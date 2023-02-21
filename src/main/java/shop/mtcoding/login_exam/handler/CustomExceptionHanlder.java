@@ -15,7 +15,12 @@ public class CustomExceptionHanlder {
     // NullPointException <- RuntimeException
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<?> customException(CustomException e) {
-        String responseBody = Script.back(e.getMessage());
+        String responseBody = "";
+        if (!e.getUrl().equals("")) {
+            responseBody = Script.back(e.getMessage(), e.getUrl());
+            return new ResponseEntity<>(responseBody, e.getStatus());
+        }
+        responseBody = Script.back(e.getMessage());
         return new ResponseEntity<>(responseBody, e.getStatus());
     }
 
